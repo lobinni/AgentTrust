@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gen-green: #8cffbd;
+  --color-gen-blue: #7dd3fc;
+  --color-gen-purple: #c4b5fd;
+  --color-gen-cyan: #22d3ee;
+
+  --color-dark-900: #08090b;
+  --color-dark-800: #101216;
+  --color-dark-700: #15171b;
+  --color-dark-600: #1e2128;
+  --color-dark-500: #292c32;
+
+  --font-heading: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html { color-scheme: dark; }
+
+body {
+  margin: 0;
+  background: var(--color-dark-900);
+  color: #e5e5e5;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+code, pre, .font-mono { font-family: var(--font-mono) !important; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-dark-800); }
+::-webkit-scrollbar-thumb { background: var(--color-dark-500); border-radius: 3px; }
+
+/* ─── Button reset ─── */
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+}
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ─── Primary: gradient + glow ─── */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 24px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--color-gen-green), var(--color-gen-blue));
+  color: var(--color-dark-900);
+  font-family: var(--font-heading); font-weight: 700; font-size: 14px;
+  letter-spacing: 0.02em;
+  transition: box-shadow 0.2s, transform 0.1s;
+}
+.btn-primary:hover:not(:disabled) {
+  box-shadow: 0 0 28px rgba(140, 255, 189, 0.35);
+  transform: translateY(-1px);
+}
+.btn-primary:active:not(:disabled) { transform: translateY(0); }
+
+/* ─── Ghost: outlined ─── */
+.btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 24px; border-radius: 10px;
+  background: transparent; color: #d1d5db;
+  font-family: var(--font-heading); font-weight: 600; font-size: 14px;
+  letter-spacing: 0.02em;
+  border: 1px solid #3f4350;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, box-shadow 0.2s;
+}
+.btn-ghost:hover:not(:disabled) {
+  background: rgba(140, 255, 189, 0.05);
+  border-color: rgba(140, 255, 189, 0.3);
+  color: var(--color-gen-green);
+  box-shadow: 0 0 12px rgba(140, 255, 189, 0.08);
+}
+
+/* ─── Small button ─── */
+.btn-sm {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 7px 14px; border-radius: 8px;
+  background: transparent; color: #9ca3af;
+  font-family: var(--font-heading); font-weight: 500; font-size: 12px;
+  border: 1px solid #3f4350;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.btn-sm:hover:not(:disabled) {
+  background: rgba(255,255,255,0.05);
+  border-color: #6b7280; color: #d1d5db;
+}
+
+/* ─── Nav tab (web3 style) ─── */
+.nav-tab {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 18px; border-radius: 8px;
+  font-family: var(--font-heading);
+  font-weight: 600; font-size: 13px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: #6b7280;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.nav-tab .tab-icon {
+  font-size: 14px; line-height: 1;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+/* Hover */
+.nav-tab:hover {
+  color: #d1d5db;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+.nav-tab:hover .tab-icon { opacity: 0.9; }
+
+/* Active */
+.nav-tab-active {
+  color: var(--color-gen-green) !important;
+  background: rgba(140, 255, 189, 0.08);
+  border-color: rgba(140, 255, 189, 0.2);
+  box-shadow: 0 0 16px rgba(140, 255, 189, 0.06), inset 0 0 12px rgba(140, 255, 189, 0.03);
+}
+.nav-tab-active .tab-icon { opacity: 1; }
+
+/* Bottom bar accent on active */
+.nav-tab-active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: 20%; right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gen-green), transparent);
+  border-radius: 2px;
+}
+
+/* ─── Card ─── */
+.card-glass {
+  background: var(--color-dark-800);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 16px;
+}
+.glow-border {
+  box-shadow: 0 0 20px rgba(140,255,189,0.1), inset 0 0 20px rgba(140,255,189,0.03);
+}
+
+/* ─── Gradient text ─── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-gen-green), var(--color-gen-blue));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Animations ─── */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+.animate-pulse-slow { animation: pulse-slow 2s ease-in-out infinite; }
+
+/* ─── Form input ─── */
+input, textarea, select { font: inherit; }
+.input-dark {
+  background: var(--color-dark-800);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 10px; color: #fff; padding: 14px;
+  outline: none; width: 100%;
+  font-family: var(--font-heading);
+  transition: border-color 0.2s;
+}
+.input-dark:focus { border-color: var(--color-gen-green); }
+
+/* ─── Status pills ─── */
+.pill {
+  font-family: var(--font-heading);
+  font-size: 10px; letter-spacing: 1.5px; font-weight: 700;
+  padding: 4px 10px; border-radius: 9999px; text-transform: uppercase;
+}
+.pill-open { background: rgba(140,255,189,0.15); color: var(--color-gen-green); border: 1px solid rgba(140,255,189,0.3); }
+.pill-accepted { background: rgba(125,211,252,0.15); color: var(--color-gen-blue); border: 1px solid rgba(125,211,252,0.3); }
+.pill-submitted { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+.pill-completed { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+.pill-disputed { background: rgba(251,146,60,0.15); color: #fb923c; border: 1px solid rgba(251,146,60,0.3); }
+.pill-refunded, .pill-cancelled { background: rgba(248,113,113,0.15); color: #f87171; border: 1px solid rgba(248,113,113,0.3); }
+.pill-worker { background: rgba(140,255,189,0.15); color: var(--color-gen-green); border: 1px solid rgba(140,255,189,0.3); }
+.pill-client { background: rgba(125,211,252,0.15); color: var(--color-gen-blue); border: 1px solid rgba(125,211,252,0.3); }
+.pill-review { background: rgba(196,181,253,0.15); color: var(--color-gen-purple); border: 1px solid rgba(196,181,253,0.3); }
